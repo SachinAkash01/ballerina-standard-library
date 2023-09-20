@@ -68,10 +68,10 @@ jobs:
                   perl -pi -e "s/^\s*version=.*/version=${{ env.BALLERINA_LANG_VERSION }}/" gradle.properties
                   ./gradlew build -x check -x test publishToMavenLocal --scan --no-daemon
                   
-            - name: Set up GraalVM
+            - name: Set up GraalVM 21
               uses: graalvm/setup-graalvm@v1
               with:
-                  java-version: '17'
+                  java-version: '21'
                   distribution: 'graalvm-community'
                   github-token: ${{ secrets.GITHUB_TOKEN }}
                   set-java-home: 'false'
@@ -152,10 +152,10 @@ jobs:
                   perl -pi -e "s/^\s*version=.*/version=${{ env.BALLERINA_LANG_VERSION }}/" gradle.properties
                   ./gradlew.bat build -x check -x test publishToMavenLocal --continue -x createJavadoc --stacktrace -scan --console=plain --no-daemon --no-parallel
 
-            - name: Set up GraalVM
+            - name: Set up GraalVM 21
               uses: graalvm/setup-graalvm@v1
               with:
-                  java-version: '17'
+                  java-version: '21'
                   distribution: 'graalvm-community'
                   github-token: ${{ secrets.GITHUB_TOKEN }}
                   set-java-home: 'false'
